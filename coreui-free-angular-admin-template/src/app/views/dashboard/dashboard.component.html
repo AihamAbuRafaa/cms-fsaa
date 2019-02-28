@@ -2,8 +2,9 @@
 
 <div class="animated fadeIn">
   <div class="row">
-    <div *ngFor="let place of places; let i of index" class="col-sm-6 col-md-4">
-      <div class="card">
+    <div *ngFor="let place of places; let i of index" class="col-sm-6 col-md-4" >
+      <span *ngIf="place.place.isApproved==false">
+      <div class="card" >
         <div class="card-header">
           {{place.place.title}}
         </div>
@@ -11,7 +12,7 @@
           {{place.place.description}}
         </div>
         <div>
-          <img src="place.place.image" height="42" width="42">
+          <img [src]="place.place.image" height="500" width="330">
         </div>
         <div>
           <agm-map  name="map"
@@ -28,6 +29,7 @@
           <button  mat-raised-button (click)="okayCard(i)" color="green">Okay</button>
         </div>
       </div>
+    </span>
     </div><!--/.col-->
     </div>
     </div>

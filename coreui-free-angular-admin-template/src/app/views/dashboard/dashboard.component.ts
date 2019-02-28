@@ -14,9 +14,13 @@ export class DashboardComponent implements OnInit {
   {    
    }
   async ngOnInit(){
-    await this.placesSvc.init();
+    try{
     this.places=this.placesSvc.loadPlaces();
     console.log(this.places)
+    }catch(err)
+    {
+      console.log(err)
+    }
   }
   deleteCard(i){
     console.log(i)

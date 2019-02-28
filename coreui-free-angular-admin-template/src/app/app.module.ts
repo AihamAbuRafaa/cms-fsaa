@@ -62,7 +62,14 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp({
+      apiKey: "AIzaSyDc607f1SpX9XSskVH_MJcvvVzIgzntX30",
+      authDomain: "fsaa-738e5.firebaseapp.com",
+      databaseURL: "https://fsaa-738e5.firebaseio.com",
+      projectId: "fsaa-738e5",
+      storageBucket: "fsaa-738e5.appspot.com",
+      messagingSenderId: "629862427374"
+    }),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,

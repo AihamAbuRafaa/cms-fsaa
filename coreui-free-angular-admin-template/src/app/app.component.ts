@@ -9,7 +9,7 @@ import { PlacesService } from './places.service';
   template: '<router-outlet></router-outlet>'
 })
 export class AppComponent implements OnInit {
-  constructor(public user:UserService,private router: Router,private placesSvc:PlacesService) { }
+  constructor(public user: UserService, private router: Router, private placesSvc: PlacesService) { }
 
   async ngOnInit() {
     this.router.events.subscribe((evt) => {
@@ -18,6 +18,11 @@ export class AppComponent implements OnInit {
       }
       window.scrollTo(0, 0);
     });
+    try {
+      await this.placesSvc.init();
+    } catch (error) {
+      console.error(error);
 
+    }
   }
 }
