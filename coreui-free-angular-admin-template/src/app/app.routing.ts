@@ -8,15 +8,9 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 export const routes: Routes = [
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
   {
     path: '',
     redirectTo: 'dashboard',
@@ -36,7 +30,13 @@ export const routes: Routes = [
       title: 'Page 500'
     }
   },
-
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
   {
     path: 'register',
     component: RegisterComponent,
@@ -46,7 +46,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: LoginComponent,
+    component: DefaultLayoutComponent,
     data: {
       title: 'Home'
     },
@@ -87,9 +87,9 @@ export const routes: Routes = [
   },
   { path: '**', component: P404Component }
 ];
-
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
+export const routingComponent =[DashboardComponent,LoginComponent]

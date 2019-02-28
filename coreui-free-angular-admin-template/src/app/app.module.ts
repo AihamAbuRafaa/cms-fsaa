@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { MatListModule } from '@angular/material/list';
+import { AgmCoreModule } from '@agm/core';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -43,10 +45,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
@@ -60,7 +65,12 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    MatListModule,
+    AngularFirestoreModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC1AcW_u4SenzWkPprQe4kYuCA3saCUiww'
+    }),
   ],
   declarations: [
     AppComponent,
@@ -68,7 +78,8 @@ import { FormsModule } from '@angular/forms';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+
   ],
   providers: [{
     provide: LocationStrategy,

@@ -6,6 +6,9 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { MatListModule } from '@angular/material/list';
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
@@ -13,7 +16,10 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     DashboardRoutingModule,
     ChartsModule,
     BsDropdownModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    MatListModule,
+    CommonModule,
+    AgmCoreModule,
   ],
   declarations: [ DashboardComponent ]
 })

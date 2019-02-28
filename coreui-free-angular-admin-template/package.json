@@ -27,13 +27,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^7.2.6",
+    "@agm/core": "^1.0.0-beta.5",
+    "@angular/animations": "^7.2.7",
+    "@angular/cdk": "^7.3.3",
     "@angular/common": "^7.2.6",
     "@angular/compiler": "^7.2.6",
     "@angular/core": "^7.2.6",
     "@angular/fire": "^5.1.1",
     "@angular/forms": "^7.2.6",
     "@angular/http": "^7.2.6",
+    "@angular/material": "^7.3.3",
     "@angular/platform-browser": "^7.2.6",
     "@angular/platform-browser-dynamic": "^7.2.6",
     "@angular/router": "^7.2.6",
@@ -41,6 +44,7 @@
     "@coreui/coreui": "^2.1.7",
     "@coreui/coreui-plugin-chartjs-custom-tooltips": "^1.2.0",
     "@coreui/icons": "0.3.0",
+    "angular-material": "^1.1.13",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.6.5",
@@ -84,10 +88,10 @@
     "node": ">= 8.9.4",
     "npm": ">= 5.6.0"
   },
-  "prettier":{
-    "trailingComma":"es5",
-    "tabWidth":4,
-    "singleQuote":true,
-    "printWidth":120
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "singleQuote": true,
+    "printWidth": 120
   }
 }
