@@ -10,12 +10,22 @@ import { PlacesService, places } from '../../places.service';
 })
 export class DashboardComponent implements OnInit {
   places:places[];
+  cachedplaces:any=[];
   constructor(private placesSvc:PlacesService)
   {    
    }
   async ngOnInit(){
     try{
-    this.places=this.placesSvc.loadPlaces();
+    this.places= await this.placesSvc.loadPlaces();
+    this.cachedplaces=this.places
+    // this.places.forEach(i=>{
+    //   let a:any=i;
+    //   console.log(a )
+    //   if(a.place.isApproved==false)
+    //   {
+    //     this.cachedplaces.push(i);
+    //   }
+    // })
     console.log(this.places)
     }catch(err)
     {
@@ -23,10 +33,14 @@ export class DashboardComponent implements OnInit {
     }
   }
   deleteCard(i){
-    console.log(i)
+    this.placesSvc.deletePlace(i)
+    this.cachedplaces=this.placesSvc.loadPlaces();
+    window.location.reload();
   }
   okayCard(i){
-    console.log(i)
+    this.placesSvc.updatePlace(i)
+    this.cachedplaces=this.placesSvc.loadPlaces();
+    window.location.reload();
   }
 }
 

@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 })
 export class PlacesService {
   places: any[] = [];
+  keys :any[]=[];
   constructor(private db: AngularFireDatabase,
     private dbstor: AngularFirestore) {
   }
@@ -18,6 +19,7 @@ export class PlacesService {
       this.db.list('cards').snapshotChanges(['child_changed']).subscribe(data => {
         let actions = data;
         actions.forEach(action => {
+          this.keys.push(action.key)
           this.places.push(action.payload.val());
         });
         resolve(this.places);
@@ -36,9 +38,13 @@ export class PlacesService {
       });
       }))*/
       this.places.map(p=>{
-        firebase.storage().ref('image228').getDownloadURL().then(url => {
+        let pa:any=p.place;
+        if(pa.imageUrl)
+        {
+        firebase.storage().ref(pa.imageUrl).getDownloadURL().then(url => {
          p.place.image = url;
      })
+    }
    })
       console.log(this.places)
 
@@ -51,12 +57,33 @@ export class PlacesService {
     await this.getPlaces();
     await this.getImages();
   }
-  async updatePlace() {
+  async updatePlace(i) {
+    return new Promise((resolve,reject)=>{
+      firebase.database().ref('cards').child(this.keys[i]).child("place").update({
+        
+        isApproved:true
+      });
+      this.places.splice(i,1);
+      console.log(this.places)
+      resolve(this.places)
+     })
+  }
 
+  async deletePlace(i){
+    return new Promise((resolve,reject)=>{
+      console.log(i)
+      firebase.database().ref('cards').child(this.keys[i]).remove();
+      let a:any=this.places[i].place.imageUrl
+      firebase.storage().ref(a).delete()
+      console.log(i)
+      this.places.splice(i,1);
+      console.log(this.places)
+      resolve(this.places)
+     })
   }
 
   loadPlaces() {
-    this.places = this.places.filter(i => i.place.isApproved == false);
+
     return this.places;
   }
 }
