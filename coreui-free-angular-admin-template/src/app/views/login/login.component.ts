@@ -17,7 +17,10 @@ export class LoginComponent {
   {
     let i=f.value
     this.user.login(i.username,i.password).then((result) => {
+      if(result)
+      {
       this.router.navigate(['/dashboard']);
+      }
     });
   }
  }

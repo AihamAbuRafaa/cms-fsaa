@@ -29,14 +29,6 @@ export class PlacesService {
 
   async getImages() {
     try {
-      this.places = this.places.filter(i => i.place.isApproved == false);
-
-      /*
-      await Promise.all(this.places.map(async p => {
-        let i =await firebase.storage().ref(p.place.imageUrl).getDownloadURL().then(url => {
-          p.image = url;
-      });
-      }))*/
       this.places.map(p=>{
         let pa:any=p.place;
         if(pa.imageUrl)
