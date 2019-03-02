@@ -30,7 +30,7 @@ export class PlacesService {
   async getImages() {
     try {
       this.places = this.places.filter(i => i.place.isApproved == false);
-      console.log(this.places)
+
       /*
       await Promise.all(this.places.map(async p => {
         let i =await firebase.storage().ref(p.place.imageUrl).getDownloadURL().then(url => {
@@ -62,6 +62,14 @@ export class PlacesService {
         
         isApproved:true
       });
+      this.places.splice(i,1);
+      resolve(this.places)
+     })
+  }
+
+  async updatePlaceReport(i){
+    return new Promise((resolve,reject)=>{
+      firebase.database().ref('cards').child(this.keys[i]).child("reports").remove()
       this.places.splice(i,1);
       resolve(this.places)
      })

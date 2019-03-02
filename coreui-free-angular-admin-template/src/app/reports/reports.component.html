@@ -3,7 +3,7 @@
 <div class="animated fadeIn">
     <div class="row">
       <div *ngFor="let place of places; let i = index" class="col-sm-6 col-md-4" >
-        <span *ngIf="place.place.isApproved==false">
+        <div *ngIf="place.reports">
         <div class="card" >
           <div class="card-header">
             {{place.place.title}}
@@ -26,8 +26,8 @@
           </div>
           <div>
             reports:
-            <ul>
-              <li></li>
+            <ul >
+              <li *ngIf="place.reports">{{place.reports.report.report}}</li>
             </ul>
           </div>
           <div>
@@ -36,7 +36,7 @@
           </div>
 
         </div>
-      </span>
+      </div>
       </div><!--/.col-->
       </div>
       </div>

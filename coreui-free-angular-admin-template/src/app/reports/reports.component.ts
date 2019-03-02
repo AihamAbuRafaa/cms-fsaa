@@ -15,18 +15,16 @@ export class ReportsComponent implements OnInit {
     try{
     this.places= await this.placesSvc.loadPlaces();
     this.cachedplaces=this.places
+    console.log(this.places)
     this.cachedplaces.forEach(element => {
       if(element)
       {
       if(element.reports)
       {
-        console.log(element.reports)
-      element.reports.forEach(e=>{
-        console.log(e)
-      })
+        this.reports.push(element.reports.report)
       }
     }
-      
+      console.log(this.reports)
     });
     }catch(err)
     {
@@ -39,7 +37,7 @@ export class ReportsComponent implements OnInit {
     window.location.reload();
   }
   okayCard(i){
-    this.placesSvc.updatePlace(i)
+    this.placesSvc.updatePlaceReport(i)
     this.cachedplaces=this.placesSvc.loadPlaces();
     window.location.reload();
   }

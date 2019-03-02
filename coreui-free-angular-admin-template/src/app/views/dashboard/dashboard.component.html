@@ -3,7 +3,7 @@
 <div class="animated fadeIn">
   <div class="row">
     <div *ngFor="let place of places; let i = index" class="col-sm-6 col-md-4" >
-      <span *ngIf="place.place.isApproved==false">
+      <div *ngIf="place.place.isApproved==false">
       <div class="card" >
         <div class="card-header">
           {{place.place.title}}
@@ -29,7 +29,7 @@
           <button  mat-raised-button (click)="okayCard(i)" color="green">Okay</button>
         </div>
       </div>
-    </span>
+    </div>
     </div><!--/.col-->
     </div>
     </div>
