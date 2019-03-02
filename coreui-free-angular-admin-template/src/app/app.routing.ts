@@ -9,6 +9,8 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { ReportsComponent } from './reports/reports.component';
+import {AuthGuard} from './auth.guard'
+import { CanActivate } from '@angular/router/src/utils/preactivation';
 
 export const routes: Routes = [
   {
@@ -39,7 +41,8 @@ export const routes: Routes = [
   },
   {
     path:'reports',
-    component:ReportsComponent
+    component:ReportsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'register',
@@ -69,7 +72,8 @@ export const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
+        canActivate:[AuthGuard]
       },
       {
         path: 'icons',

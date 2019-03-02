@@ -48,6 +48,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReportsComponent } from './reports/reports.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   imports: [
@@ -93,7 +94,7 @@ import { ReportsComponent } from './reports/reports.component';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },AuthGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

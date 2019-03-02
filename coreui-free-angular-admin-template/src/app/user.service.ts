@@ -10,6 +10,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
   providedIn: 'root'
 })
 export class UserService {
+  isLoggedIn:boolean=false;
   uid = this.afAuth.authState.pipe(map(authState => {
     if (!authState) {
       return null;
