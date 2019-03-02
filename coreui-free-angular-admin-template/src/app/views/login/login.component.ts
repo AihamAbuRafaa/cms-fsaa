@@ -10,13 +10,14 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
   templateUrl: 'login.component.html'
 })
 export class LoginComponent {
-  constructor(public user:UserService,private rot:Router)
+  constructor(public user:UserService,private router:Router)
   {
   }
   login(f:NgForm)
   {
     let i=f.value
-    this.user.login(i.username,i.password);
-    this.rot.navigateByUrl["\dashboard"];
+    this.user.login(i.username,i.password).then((result) => {
+      this.router.navigate(['/dashboard']);
+    });
   }
  }

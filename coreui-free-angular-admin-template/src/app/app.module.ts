@@ -47,6 +47,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   imports: [
@@ -86,6 +87,7 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
     P500Component,
     LoginComponent,
     RegisterComponent,
+    ReportsComponent,
 
   ],
   providers: [{

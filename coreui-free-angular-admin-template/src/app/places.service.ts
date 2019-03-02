@@ -46,7 +46,6 @@ export class PlacesService {
      })
     }
    })
-      console.log(this.places)
 
     } catch (err) {
       console.log(err)
@@ -64,7 +63,6 @@ export class PlacesService {
         isApproved:true
       });
       this.places.splice(i,1);
-      console.log(this.places)
       resolve(this.places)
      })
   }
@@ -75,9 +73,7 @@ export class PlacesService {
       firebase.database().ref('cards').child(this.keys[i]).remove();
       let a:any=this.places[i].place.imageUrl
       firebase.storage().ref(a).delete()
-      console.log(i)
       this.places.splice(i,1);
-      console.log(this.places)
       resolve(this.places)
      })
   }

@@ -1,0 +1,43 @@
+
+
+<div class="animated fadeIn">
+    <div class="row">
+      <div *ngFor="let place of places; let i = index" class="col-sm-6 col-md-4" >
+        <span *ngIf="place.place.isApproved==false">
+        <div class="card" >
+          <div class="card-header">
+            {{place.place.title}}
+          </div>
+          <div class="card-body">
+            {{place.place.description}}
+          </div>
+          <div>
+            <img [src]="place.place.image" height="500" width="330">
+          </div>
+          <div>
+            <agm-map  name="map"
+              [latitude]="place.place.location.lat"
+              [longitude]="place.place.location.lng"
+              [zoom]="16">
+              <agm-marker
+                [latitude]="place.place.location.lat"
+                [longitude]="place.place.location.lng"></agm-marker>
+            </agm-map>
+          </div>
+          <div>
+            reports:
+            <ul>
+              <li></li>
+            </ul>
+          </div>
+          <div>
+            <button mat-raised-button (click)="deleteCard(i)" color="red">Delete</button>
+            <button  mat-raised-button (click)="okayCard(i)" color="green">Okay</button>
+          </div>
+
+        </div>
+      </span>
+      </div><!--/.col-->
+      </div>
+      </div>
+      
